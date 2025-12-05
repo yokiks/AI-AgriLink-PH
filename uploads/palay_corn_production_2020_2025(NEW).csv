@@ -1,0 +1,153 @@
+﻿"Palay and Corn: Volume of Production in Metric Tons by Ecosystem/Croptype, Quarter, Semester, Region, and Province, 1987-2025",,,,,,,,
+,,,,,,,,
+,,PRODUCTIONS,,,,,,
+,Region,2020,2021,2022,2023,2024,2025,Crops
+,PHILIPPINES,19294855.51,19960170.19,19756513.4,20059561.96,19087135.43,..,Palay
+,..CORDILLERA ADMINISTRATIVE REGION (CAR),376473.48,377133.35,338067.45,331469.66,299400.11,..,Palay
+,....Abra,83667.1,90434.39,76921,74414.98,68864.6,..,Palay
+,....Apayao,96869.76,82468.92,74379.86,75730.27,69794.06,..,Palay
+,....Benguet,21707.29,23667,23410.77,21524.15,18403.9,..,Palay
+,....Ifugao,49412.61,41902.46,32934.09,34201.71,28337.25,..,Palay
+,....Kalinga,108884.81,122959.34,114804.76,112839.99,101309.84,..,Palay
+,....Mountain Province,15931.91,15701.24,15616.98,12758.56,12690.47,..,Palay
+,..REGION I (ILOCOS REGION),1902661.85,1902342.6,1965372.36,1990286.68,1967134.45,..,Palay
+,....Ilocos Norte,341994.85,337191.6,330749,338681.32,341888.5,..,Palay
+,....Ilocos Sur,249171,244634,244413.83,246075.76,239286,..,Palay
+,....La Union,176117,157881,171276.53,173891.55,172289.95,..,Palay
+,....Pangasinan,1135379,1162636,1218933,1231638.05,1213670,..,Palay
+,..REGION II (CAGAYAN VALLEY),2645776.78,2909950.48,2928165.7,3026087.62,2922716.55,..,Palay
+,....Batanes,84,20.31,61.42,80.27,51.5,..,Palay
+,....Cagayan,921763,1051621,1068498.28,1127141.5,1063403,..,Palay
+,....Isabela,1359555.64,1425907.17,1457750.2,1479190.06,1468910,..,Palay
+,....Nueva Vizcaya,253855.78,308177.4,284877.13,298646.77,287209.89,..,Palay
+,....Quirino,110518.36,124224.6,116978.67,121029.02,103142.16,..,Palay
+,..REGION III (CENTRAL LUZON),3635147.59,3741210.53,3616712.4,3638431.28,3482484.4,..,Palay
+,....Aurora,90429,115368,106210,100302.12,83625.16,..,Palay
+,....Bataan,125143,117143.05,115402.46,109195.3,107111.35,..,Palay
+,....Bulacan,361253.82,387699.04,402415.52,374652.32,330658,..,Palay
+,....Nueva Ecija,1904827.36,1884323.97,1781964.01,1839858.69,1772448.7,..,Palay
+,....Pampanga,421937.8,476974.6,474339.44,463526.28,421586.75,..,Palay
+,....Tarlac,573336.95,605130.81,599576.56,608668.8,619899,..,Palay
+,....Zambales,158219.66,154571.06,136804.41,142227.77,147155.44,..,Palay
+,..REGION IV-A (CALABARZON),386919.93,409915.07,395898.69,433399.42,311059.06,..,Palay
+,....Batangas,33001.5,35354.04,34871.94,38026.81,22028.89,..,Palay
+,....Cavite,24626.6,27828.66,23213.78,20971.6,15462.04,..,Palay
+,....Laguna,129326.65,120224.02,128431.37,146255.35,114703.63,..,Palay
+,....Quezon,186178.6,203083,185878.5,204629,140941.69,..,Palay
+,....Rizal,13786.59,23425.36,23503.1,23516.66,17922.81,..,Palay
+,..MIMAROPA REGION,1183149.32,1225283.21,1231933.69,1210384.05,1157865.71,..,Palay
+,....Marinduque,18273,18494,18918.85,17819,16526,..,Palay
+,....Occidental Mindoro,310004,366951.7,362419.23,327746.49,304285.25,..,Palay
+,....Oriental Mindoro,430967.32,394864.51,378504.66,365448.67,348832.16,..,Palay
+,....Palawan,387172,408272,433395.46,461925.4,453839.11,..,Palay
+,....Romblon,36733,36701,38695.49,37444.49,34383.19,..,Palay
+,..REGION V (BICOL REGION),1294991.12,1346952.44,1329004.4,1302648.98,1202079.35,..,Palay
+,....Albay,216006.95,224533,226230.8,232649.25,204046.2,..,Palay
+,....Camarines Norte,108512.07,116292.63,109792.43,108390.12,85901.66,..,Palay
+,....Camarines Sur,650406,683203,665430,643401,628082,..,Palay
+,....Catanduanes,27019.09,23376.41,24809.46,17793.27,20904.52,..,Palay
+,....Masbate,148010.01,148754,151253,155154,136873.72,..,Palay
+,....Sorsogon,145037,150793.4,151488.71,145261.34,126271.24,..,Palay
+,..REGION VI (WESTERN VISAYAS),2295579.75,2356902.44,2321593.72,2263158.33,1463496.52,..,Palay
+,....Aklan,122307.19,106547.11,111580.62,84938.98,78217.47,..,Palay
+,....Antique,265531,302746,313061.73,248819.65,189999.91,..,Palay
+,....Capiz,363272.69,383809.56,354849.66,323280.58,310895.87,..,Palay
+,....Guimaras,64991,61276.75,64978.84,54000,53049.5,..,Palay
+,....Iloilo,993789.87,1018989.02,1016587.87,1066065.52,831333.77,..,Palay
+,....Negros Occidental,485688,483534,460535,486053.6,..,..,Palay
+,..NEGROS ISLAND REGION,..,..,..,..,499696.78,..,Palay
+,....Negros Occidental a/,..,..,..,..,427871.6,..,Palay
+,....Negros Oriental b/,..,..,..,..,70473.8,..,Palay
+,....Siquijor b/,..,..,..,..,1351.38,..,Palay
+,..REGION VII (CENTRAL VISAYAS),260523.78,289502,242394.57,293073.38,244748.46,..,Palay
+,....Bohol,188832.78,210584,170086.85,212718.61,234801.78,..,Palay
+,....Cebu,11206,12199,11898.3,12046.18,9946.68,..,Palay
+,....Negros Oriental,58983,64176,56925.8,65855.67,..,..,Palay
+,....Siquijor,1502,2543,3483.62,2452.92,..,..,Palay
+,..REGION VIII (EASTERN VISAYAS),927095.25,864373.13,840344.65,844372.47,827935.09,..,Palay
+,....Biliran,53609,53222.5,52579.26,51710.02,51426,..,Palay
+,....Eastern Samar,50196.5,53243.58,55252.12,54266.29,56783.22,..,Palay
+,....Leyte,462010.3,432309.75,434479.29,442248.56,439671.43,..,Palay
+,....Northern Samar,113622.75,82833,80943.64,80590.27,76202,..,Palay
+,....Samar,166143.1,164250.31,154850.61,153454.74,144712.43,..,Palay
+,....Southern Leyte,81513.6,78514,62239.73,62102.58,59140,..,Palay
+,..REGION IX (ZAMBOANGA PENINSULA),645407.04,667354.85,651696.54,703864.31,682244.8,..,Palay
+,....Zamboanga del Norte,108395.4,119409,114490.97,110914.49,106096.8,..,Palay
+,....Zamboanga del Sur,334184.84,368938.65,355680.94,413850.6,411471.24,..,Palay
+,....Zamboanga Sibugay,174808.62,179007.2,181524.63,179099.22,164676.76,..,Palay
+,....Zamboanga City,28018.17,0,0,0,0,..,Palay
+,..REGION X (NORTHERN MINDANAO),781824.98,793640.31,814738.58,824241.41,814081.24,..,Palay
+,....Bukidnon,484697.53,499515.39,512414.01,517571.36,514036.54,..,Palay
+,....Camiguin,2133.16,2085.6,2168.09,2423.54,2059.62,..,Palay
+,....Lanao del Norte,188361.69,187808.88,197453.15,202754.66,200017.97,..,Palay
+,....Misamis Occidental,82408.38,83301.4,80577.95,78207,76121.4,..,Palay
+,....Misamis Oriental,24224.22,20929.04,22125.37,23284.85,21845.71,..,Palay
+,..REGION XI (DAVAO REGION),466763.69,484724.58,490254.15,502744.59,508407.9,..,Palay
+,....Davao de Oro (Compostela Valley),124933.29,137477,134422.62,139813.55,135459,..,Palay
+,....Davao del Norte,129737.38,134650.36,138980.45,143098.22,143802.11,..,Palay
+,....Davao del Sur,123709.71,138124.41,142438.92,144948.85,153760.73,..,Palay
+,....Davao Occidental,2365.28,2440.38,2379.6,2393.17,2460.91,..,Palay
+,....Davao Oriental,71366.71,72032.43,72032.56,72490.8,72925.16,..,Palay
+,....City of Davao,14651.33,0,0,0,0,..,Palay
+,..REGION XII (SOCCSKSARGEN),1264116.7,1278188.1,1244277.89,1256405.9,1212725.14,..,Palay
+,....Cotabato (North Cotabato),521764.28,500973,510973.18,498892,483867,..,Palay
+,....Sarangani,39109.28,41202.86,39743.58,40232.94,37445.14,..,Palay
+,....South Cotabato,306343.16,313631,299554.52,310351.32,306275,..,Palay
+,....Sultan Kudarat,396899.98,422381.24,394006.61,406929.64,385138,..,Palay
+,..REGION XIII (CARAGA),503330.88,467743.5,520181.03,543431.02,574092.72,..,Palay
+,....Agusan del Norte,70493.42,64669,75213.9,82990.38,83869.15,..,Palay
+,....Agusan del Sur,269438.44,257215,295052.71,301609.65,312379.6,..,Palay
+,....Dinagat Islands,6872.9,6393.12,6824.7,6327.99,7047.46,..,Palay
+,....Surigao del Norte,69496.1,63997.64,59542.53,68544,69693.51,..,Palay
+,....Surigao del Sur,87030.02,75468.74,83547.19,83959,101103,..,Palay
+,..BANGSAMORO AUTONOMOUS REGION IN MUSLIM MINDANAO (BARMM),725093.37,844953.6,825877.58,895562.87,916967.17,..,Palay
+,....Basilan,273.5,484.48,727.45,703,739.05,..,Palay
+,....Lanao del Sur,217678.81,219381.05,223465.04,227098.5,227913.92,..,Palay
+,....Maguindanao del Norte,..,..,..,..,266291.48,..,Palay
+,....Maguindanao del Sur,505916.19,622850.07,600294.13,621595.9,360401.72,..,Palay
+,....Sulu,880,1914,1052.96,490,29,..,Palay
+,....Tawi-tawi,344.87,324,338,516,509,..,Palay
+,,,,,,,,
+".. Data not applicable
+a/ - Still part of Western Visayas prior to 2025
+b/ - Still part of Central Visayas prior to 2025
+Q2 2022 - Revised data for Upland Palay in Davao del Norte.
+Q2 2023 - Revised data for Yellow Corn in Lanao del Sur.
+Q3 2022 - Revised data for Rainfed Palay in Occidental Mindoro.
+Negros Occidental, Negros Oriental, and Siquijor are included in Negros Island Region (NIR) starting 2025.
+Q2 2025 - Preliminary",,,,,,,,
+"The sample coverage for BARMM includes provinces of Maguindanao del Sur and Maguindanao del Norte (previously Province of Maguindanao), Cotabato City and the eight cluster areas (63 barangays, previously from Province of Cotabato).
+TOTAL of BARMM starting Q1 2023 is not equal to the sum of provinces as the estimates of the Eight Cluster Areas is already included in the total estimate of BARMM.
+",,,,,,,,
+Year:,,,,,,,,
+P,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+Latest update:,,,,,,,,
+20250729 09:00,,,,,,,,
+,,,,,,,,
+Source:,,,,,,,,
+Philippine Statistics Authority,,,,,,,,
+,,,,,,,,
+Contact:,,,,,,,,
+Crops Statistics Division;,,,,,,,,
+Philippine Statistics Authority;,,,,,,,,
+"16th Floor PSA Headquarters, PSA Complex, East Avenue, Quezon City;",,,,,,,,
+Telefax:(+632) 8376-2022;,,,,,,,,
+Email: csd.staff@psa.gov.ph,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+Units:,,,,,,,,
+metric tons,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+Official statistics,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+Internal reference code:,,,,,,,,
+2E4EVCP0,,,,,,,,
