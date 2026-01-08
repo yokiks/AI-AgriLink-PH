@@ -7,6 +7,26 @@ require_login();
 
 include('includes/header.php');
 include('includes/functions.php');
+?>
+
+<!-- Background wrapper with gradient and image -->
+<div class="fixed inset-0 -z-10 overflow-hidden">
+  <!-- Background Image -->
+  <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-25" style="background-image: url('assets/img/homepage5.jpg');"></div>
+  
+  <!-- Gradient Overlay -->
+  <div class="absolute inset-0 bg-gradient-to-br from-green-50/80 via-emerald-50/80 to-teal-50/80"></div>
+  
+  <!-- Decorative background elements -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute -top-40 -right-40 w-80 h-80 bg-green-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob"></div>
+    <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-emerald-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-2000"></div>
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-teal-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-4000"></div>
+  </div>
+</div>
+
+<div class="relative z-10">
+<?php
 
 $uploadError = null;
 $uploadSuccess = null;
@@ -394,7 +414,7 @@ if ($uploadError) {
 
     <!-- Metric Cards -->
     <section id="metrics" class="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-        <article class="metric-card rounded-2xl border border-green-100 bg-gradient-to-br from-white to-green-50/30 p-4 shadow-sm">
+        <article class="metric-card rounded-2xl border border-green-100 bg-white p-4 shadow-sm">
           <div class="flex items-center justify-between mb-2">
             <p class="text-xs font-semibold uppercase tracking-wide text-green-600">Top Region</p>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -408,7 +428,7 @@ if ($uploadError) {
           </span>
         </article>
 
-        <article class="metric-card rounded-3xl border border-rose-100 bg-gradient-to-br from-white to-rose-50/30 p-6 shadow-sm">
+        <article class="metric-card rounded-2xl border border-rose-100 bg-white p-4 shadow-sm">
           <div class="flex items-center justify-between mb-2">
             <p class="text-xs font-semibold uppercase tracking-wide text-rose-600">Region to Watch</p>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-rose-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -423,7 +443,7 @@ if ($uploadError) {
           </span>
         </article>
 
-        <article class="metric-card rounded-3xl border border-amber-100 bg-gradient-to-br from-white to-amber-50/30 p-6 shadow-sm">
+        <article class="metric-card rounded-2xl border border-amber-100 bg-white p-4 shadow-sm">
           <div class="flex items-center justify-between mb-2">
             <p class="text-xs font-semibold uppercase tracking-wide text-amber-600">Coverage</p>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -437,9 +457,9 @@ if ($uploadError) {
           </span>
         </article>
 
-        <article class="metric-card rounded-3xl border border-slate-200 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-6 shadow-sm text-black">
+        <article class="metric-card rounded-2xl border border-amber-100 bg-white p-4 shadow-sm">
           <div class="flex items-center justify-between mb-2">
-            <p class="text-xs font-semibold uppercase tracking-wide text-slate-300">Dataset Size</p>
+            <p class="text-xs font-semibold uppercase tracking-wide text-amber-600">Dataset Size</p>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
             </svg>
@@ -502,7 +522,7 @@ if ($uploadError) {
 
       <!-- Charts -->
       <section class="mt-6 space-y-4">
-        <article id="chart-region" class="section-card chart-card rounded-2xl border border-green-100 bg-gradient-to-br from-white to-green-50/20 p-4 shadow-sm xl:p-5">
+        <article id="chart-region" class="section-card chart-card rounded-2xl border border-green-100 bg-white p-4 shadow-sm xl:p-5">
           <div class="flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
             <div>
               <h2 class="text-xl font-semibold text-green-900">📊 Total Production by Region</h2>
@@ -515,7 +535,7 @@ if ($uploadError) {
         </article>
 
         <div class="grid gap-6 xl:grid-cols-2">
-          <article id="chart-trend" class="section-card chart-card rounded-2xl border border-blue-100 bg-gradient-to-br from-white to-blue-50/20 p-4 shadow-sm xl:p-5">
+          <article id="chart-trend" class="section-card chart-card rounded-2xl border border-blue-100 bg-white p-4 shadow-sm xl:p-5">
             <div class="flex flex-col gap-3">
               <h2 class="text-xl font-semibold text-blue-900">📈 Yearly Production Trend</h2>
               <p class="text-sm text-gray-500">Track aggregate production shifts across the covered years.</p>
@@ -538,11 +558,11 @@ if ($uploadError) {
       </section>
 
       <!-- AI Insight -->
-      <section id="insight" class="ai-console mt-6 rounded-2xl border border-emerald-400/40 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 p-4 text-slate-100 shadow-[0_20px_45px_-25px_rgba(16,185,129,0.75)] sm:p-6" style="animation: pulse-glow 3s ease-in-out infinite;">
+      <section id="insight" class="ai-console mt-6 rounded-2xl border border-emerald-400/40 bg-white p-4 shadow-sm sm:p-6">
         <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div class="flex items-center gap-4">
             <div class="relative">
-              <span class="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 via-green-500 to-sky-500 text-xl font-bold text-slate-900 shadow-lg ring-2 ring-emerald-300/70" style="animation: pulse-glow 3s ease-in-out infinite;">
+              <span class="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 via-green-500 to-sky-500 text-xl font-bold text-black shadow-lg ring-2 ring-emerald-300/70">
                 AI
               </span>
               <span class="absolute -top-1 -right-1 flex h-4 w-4">
@@ -551,16 +571,16 @@ if ($uploadError) {
               </span>
             </div>
             <div>
-              <p class="text-xs uppercase tracking-[0.3em] text-emerald-200/70">Neural Insight Engine</p>
-              <h2 class="text-2xl font-semibold gradient-text">AI Insight Console</h2>
+              <p class="text-xs uppercase tracking-[0.3em] text-emerald-600">Neural Insight Engine</p>
+              <h2 class="text-2xl font-semibold text-emerald-900">AI Insight Console</h2>
             </div>
           </div>
           <div class="flex items-center gap-3">
             <div class="status-indicator">
               <span class="status-dot"></span>
-              <span class="text-xs font-semibold uppercase tracking-wide text-emerald-200">Processing</span>
+              <span class="text-xs font-semibold uppercase tracking-wide text-emerald-600">Processing</span>
             </div>
-            <div class="flex items-center gap-2 rounded-full border border-emerald-400/60 bg-emerald-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-emerald-200">
+            <div class="flex items-center gap-2 rounded-full border border-emerald-300 bg-emerald-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-emerald-700">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 animate-spin" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
               </svg>
@@ -568,17 +588,14 @@ if ($uploadError) {
             </div>
           </div>
         </div>
-        <div class="mt-6 rounded-2xl border border-emerald-500/30 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 p-5 shadow-inner relative overflow-hidden">
-          <!-- Animated grid background -->
-          <div class="absolute inset-0 opacity-5" style="background-image: linear-gradient(rgba(16,185,129,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(16,185,129,0.1) 1px, transparent 1px); background-size: 20px 20px;"></div>
-          
-          <div class="relative flex items-center justify-between text-xs font-mono uppercase tracking-wide text-slate-400 mb-4 pb-3 border-b border-slate-800">
+        <div class="mt-6 rounded-2xl border border-emerald-200 bg-white p-5 shadow-sm relative overflow-hidden">
+          <div class="relative flex items-center justify-between text-xs font-mono uppercase tracking-wide text-gray-600 mb-4 pb-3 border-b border-gray-200">
             <div class="flex items-center gap-4">
-                <span>Session ID: <span class="text-emerald-400"><?= date('ymd') ?>-<?= substr(hash('crc32b', $datasetMeta['fileName'] . $datasetMeta['rowCount']), 0, 6) ?></span></span>
-              <span class="text-slate-500">|</span>
-              <span>Model: <span class="text-emerald-400">AGRI-COG v2.4</span></span>
+                <span>Session ID: <span class="text-emerald-600"><?= date('ymd') ?>-<?= substr(hash('crc32b', $datasetMeta['fileName'] . $datasetMeta['rowCount']), 0, 6) ?></span></span>
+              <span class="text-gray-400">|</span>
+              <span>Model: <span class="text-emerald-600">AGRI-COG v2.4</span></span>
             </div>
-            <div class="flex items-center gap-2 text-emerald-400">
+            <div class="flex items-center gap-2 text-emerald-600">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
@@ -586,25 +603,25 @@ if ($uploadError) {
             </div>
           </div>
           
-          <div id="aiInsightBox" class="relative mt-4 space-y-4 rounded-xl border border-slate-800 bg-slate-950/70 px-5 py-6 font-mono text-sm leading-relaxed text-emerald-100 shadow-[inset_0_0_40px_rgba(15,118,110,0.25)]">
-            <div class="flex items-center gap-3 mb-3 pb-3 border-b border-slate-800">
-              <div class="flex items-center gap-2 text-emerald-400">
+          <div id="aiInsightBox" class="relative mt-4 space-y-4 rounded-xl border border-gray-200 bg-gray-50 px-5 py-6 text-sm leading-relaxed text-gray-700">
+            <div class="flex items-center gap-3 mb-3 pb-3 border-b border-gray-200">
+              <div class="flex items-center gap-2 text-emerald-600">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                 </svg>
                 <span class="font-semibold tracking-wide">AIgriLink</span>
               </div>
-              <span class="text-slate-500">|</span>
-              <span class="text-xs text-slate-400"><?= date('h:i A') ?> PHT</span>
+              <span class="text-gray-400">|</span>
+              <span class="text-xs text-gray-500"><?= date('h:i A') ?> PHT</span>
             </div>
-            <div id="aiInsightText" class="whitespace-pre-wrap text-emerald-100/90"></div>
-            <div id="aiTypingIndicator" class="hidden mt-2 text-xs text-emerald-400/60">
+            <div id="aiInsightText" class="whitespace-pre-wrap text-gray-700"></div>
+            <div id="aiTypingIndicator" class="hidden mt-2 text-xs text-emerald-600">
               <span class="inline-flex items-center gap-1">
                 <span>AI is thinking</span>
                 <span class="flex gap-1">
-                  <span class="w-1 h-1 bg-emerald-400 rounded-full animate-bounce" style="animation-delay: 0s;"></span>
-                  <span class="w-1 h-1 bg-emerald-400 rounded-full animate-bounce" style="animation-delay: 0.2s;"></span>
-                  <span class="w-1 h-1 bg-emerald-400 rounded-full animate-bounce" style="animation-delay: 0.4s;"></span>
+                  <span class="w-1 h-1 bg-emerald-500 rounded-full animate-bounce" style="animation-delay: 0s;"></span>
+                  <span class="w-1 h-1 bg-emerald-500 rounded-full animate-bounce" style="animation-delay: 0.2s;"></span>
+                  <span class="w-1 h-1 bg-emerald-500 rounded-full animate-bounce" style="animation-delay: 0.4s;"></span>
                 </span>
               </span>
             </div>
@@ -674,11 +691,11 @@ if ($uploadError) {
       }
       
       target.innerHTML = aiText + `
-      <div class="mt-6 pt-4 border-t border-slate-800 text-center text-xs"><span class="text-emerald-400/80">✓ Analysis completed successfully</span></div>
+      <div class="mt-6 pt-4 border-t border-gray-200 text-center text-xs"><span class="text-emerald-600">✓ Analysis completed successfully</span></div>
 
-      <div class="mt-3 flex flex-wrap justify-center gap-2"><span class="inline-flex items-center gap-1 rounded-full bg-emerald-500/20 px-2 py-1 text-xs text-emerald-300"><svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>Data Processed</span><span class="inline-flex items-center gap-1 rounded-full bg-blue-500/20 px-2 py-1 text-xs text-blue-300"><svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>Insights Generated</span><span class="inline-flex items-center gap-1 rounded-full bg-purple-500/20 px-2 py-1 text-xs text-purple-300"><svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>AI-Powered</span></div>
+      <div class="mt-3 flex flex-wrap justify-center gap-2"><span class="inline-flex items-center gap-1 rounded-full bg-emerald-100 px-2 py-1 text-xs text-emerald-700"><svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>Data Processed</span><span class="inline-flex items-center gap-1 rounded-full bg-blue-100 px-2 py-1 text-xs text-blue-700"><svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>Insights Generated</span><span class="inline-flex items-center gap-1 rounded-full bg-purple-100 px-2 py-1 text-xs text-purple-700"><svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>AI-Powered</span></div>
 
-        </div  v>`;
+        </div>`;
     }
   };
 
@@ -691,7 +708,6 @@ if ($uploadError) {
 })();
 </script>
 
-<script src="assets/js/chart.min.js"></script>
 <script>
 (function () {
   const regionCtxElement = document.getElementById('regionChart');
@@ -856,6 +872,9 @@ if ($uploadError) {
   }
 })();
 </script>
+
+</div>
+<!-- End background wrapper -->
 
 <?php include('includes/footer.php'); ?>
 

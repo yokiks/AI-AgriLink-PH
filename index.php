@@ -6,7 +6,25 @@ require_login();
 include('includes/header.php'); 
 ?>
 
-<div class="mx-auto max-w-6xl">
+<!-- Background wrapper with gradient and image -->
+<!-- <div class="fixed inset-0 bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 overflow-hidden z-0"> -->
+  <!-- Background Image -->
+  <div class="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat opacity-25"
+     style="background-image: url('assets/img/homepage5.jpg');">
+  </div>
+  
+  <!-- Gradient Overlay -->
+  <div class="absolute inset-0 bg-gradient-to-br from-green-50/80 via-emerald-50/80 to-teal-50/80"></div>
+  
+  <!-- Decorative background elements -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute -top-40 -right-40 w-80 h-80 bg-green-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob"></div>
+    <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-emerald-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-2000"></div>
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-teal-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-4000"></div>
+  </div>
+</div>
+
+<div class="mx-auto max-w-6xl relative z-10">
   <!-- Hero Section -->
   <section class="text-center mt-10 sm:mt-12 px-2">
     <span class="inline-flex items-center gap-2 rounded-full bg-green-700/10 px-4 py-1 text-xs font-semibold uppercase tracking-wide text-green-700">
@@ -264,5 +282,8 @@ include('includes/header.php');
   });
 })();
 </script>
+
+</div>
+<!-- End background wrapper -->
 
 <?php include('includes/footer.php'); ?>

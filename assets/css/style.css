@@ -2,6 +2,220 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
+/* Gradient background for all pages */
+body.gradient-bg {
+  background: linear-gradient(135deg, #f0fdf4 0%, #d1fae5 50%, #a7f3d0 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* Ensure main content has proper background on gradient pages */
+body.gradient-bg main {
+  position: relative;
+  z-index: 1;
+}
+
+/* Background wrapper styling for pages with background image */
+.fixed.inset-0.z-0 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+}
+
+/* Ensure content is above background */
+.relative.z-10 {
+  position: relative;
+  z-index: 10;
+}
+
+/* Login page specific styles */
+body.login-page {
+  background: transparent;
+  overflow-x: hidden;
+}
+
+body.login-page .fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+}
+
+/* Login page main content */
+body.login-page main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 140px);
+  padding: 0;
+  position: relative;
+  z-index: 10;
+  width: 100%;
+}
+
+/* Ensure form container is centered on all screen sizes */
+body.login-page main > div {
+  width: 100%;
+  max-width: 28rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Ensure nav and footer are visible on login page */
+body.login-page nav,
+body.login-page footer {
+  position: relative;
+  z-index: 20;
+}
+
+/* Forgot password page specific styles */
+body.forgot-password-page {
+  background: transparent;
+  overflow-x: hidden;
+}
+
+body.forgot-password-page .fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+}
+
+/* Forgot password page main content */
+body.forgot-password-page main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 140px);
+  padding: 0;
+  position: relative;
+  z-index: 10;
+  width: 100%;
+}
+
+/* Ensure form container is centered on all screen sizes */
+body.forgot-password-page main > div {
+  width: 100%;
+  max-width: 28rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Ensure nav and footer are visible on forgot password page */
+body.forgot-password-page nav,
+body.forgot-password-page footer {
+  position: relative;
+  z-index: 20;
+}
+
+/* Reset password page specific styles */
+body.reset-password-page {
+  background: transparent;
+  overflow-x: hidden;
+}
+
+body.reset-password-page .fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+}
+
+/* Reset password page main content */
+body.reset-password-page main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 140px);
+  padding: 0;
+  position: relative;
+  z-index: 10;
+  width: 100%;
+}
+
+/* Ensure form container is centered on all screen sizes */
+body.reset-password-page main > div {
+  width: 100%;
+  max-width: 28rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Ensure nav and footer are visible on reset password page */
+body.reset-password-page nav,
+body.reset-password-page footer {
+  position: relative;
+  z-index: 20;
+}
+
+/* Animated blob background */
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Password toggle button styling */
+.password-toggle-btn {
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+}
+
+.password-toggle-btn:hover {
+  color: #15803d !important;
+  background-color: rgba(21, 128, 61, 0.1);
+}
+
+.password-toggle-btn:active {
+  transform: scale(0.9);
+}
+
+.password-toggle-btn:focus {
+  outline: 2px solid rgba(21, 128, 61, 0.5);
+  outline-offset: 2px;
+}
+
 /* Enhanced Responsiveness */
 @media (max-width: 640px) {
   /* Mobile optimizations */
@@ -93,7 +307,79 @@ body {
   input[type="file"],
   input[type="text"],
   input[type="password"],
+  input[type="email"],
   button {
     font-size: 16px; /* Prevents zoom on iOS */
+  }
+  
+  /* Login page specific responsive styles */
+  .rounded-3xl {
+    border-radius: 1.5rem !important;
+  }
+  
+  /* Tab navigation on mobile */
+  .flex button {
+    font-size: 0.875rem;
+    padding: 0.5rem 0.75rem;
+  }
+  
+  /* Login page background adjustments for mobile */
+  body.login-page .relative {
+    width: 100%;
+    max-width: 100%;
+    padding: 1rem;
+  }
+  
+  /* Smaller padding on mobile for login form */
+  .bg-white\/95 {
+    padding: 1.5rem !important;
+  }
+  
+  /* Ensure form is centered on mobile */
+  body.login-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .bg-white\/95 {
+    padding: 2rem !important;
+  }
+  
+  /* Ensure proper centering on tablet */
+  body.login-page .relative {
+    max-width: 28rem;
+  }
+}
+
+/* Desktop adjustments */
+@media (min-width: 1025px) {
+  body.login-page .relative {
+    max-width: 28rem;
+  }
+}
+
+/* Login page tab navigation improvements */
+@media (max-width: 640px) {
+  #registerTab,
+  #loginTab {
+    font-size: 0.75rem;
+    padding: 0.5rem 0.5rem;
+  }
+}
+
+/* Ensure forms are properly spaced on all devices */
+form.space-y-4 > div,
+form.space-y-5 > div {
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 640px) {
+  form.space-y-5 > div {
+    margin-bottom: 1.25rem;
   }
 }
