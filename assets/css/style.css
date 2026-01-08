@@ -1,3 +1,99 @@
 body {
   font-family: 'Inter', sans-serif;
 }
+
+/* Enhanced Responsiveness */
+@media (max-width: 640px) {
+  /* Mobile optimizations */
+  .max-w-7xl {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Ensure tables are scrollable on mobile */
+  .overflow-x-auto {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Smaller text on mobile */
+  h1 {
+    font-size: 1.75rem !important;
+  }
+  
+  h2 {
+    font-size: 1.25rem !important;
+  }
+  
+  /* Compact navigation */
+  nav a {
+    font-size: 0.75rem;
+    padding: 0.5rem 0.75rem;
+  }
+  
+  /* Stack elements vertically on mobile */
+  .flex-row {
+    flex-direction: column;
+  }
+  
+  /* Better spacing for cards */
+  .rounded-3xl {
+    padding: 1rem !important;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  /* Tablet optimizations */
+  .max-w-7xl {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  
+  /* Adjust grid layouts for tablet */
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1025px) {
+  /* Desktop optimizations */
+  .max-w-7xl {
+    max-width: 1280px;
+  }
+}
+
+/* Print styles for PDF */
+@media print {
+  body {
+    background: white;
+  }
+  
+  nav, footer, .no-print {
+    display: none !important;
+  }
+  
+  .chart-wrapper {
+    page-break-inside: avoid;
+  }
+  
+  table {
+    page-break-inside: avoid;
+  }
+}
+
+/* Touch-friendly buttons on mobile */
+@media (hover: none) and (pointer: coarse) {
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Better form inputs on mobile */
+@media (max-width: 640px) {
+  input[type="file"],
+  input[type="text"],
+  input[type="password"],
+  button {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}

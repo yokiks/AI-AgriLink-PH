@@ -1,0 +1,16 @@
+{
+    "name": "agrilinkph/ai-agrilink",
+    "description": "AI-AgriLinkPH - Smart Agriculture Visualizer with AI Insight",
+    "type": "project",
+    "require": {
+        "php": ">=7.4",
+        "phpoffice/phpspreadsheet": "^1.29",
+        "tecnickcom/tcpdf": "^6.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "AgriLinkPH\\": "src/"
+        }
+    }
+}
+

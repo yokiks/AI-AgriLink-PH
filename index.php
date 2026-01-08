@@ -1,4 +1,10 @@
-<?php include('includes/header.php'); ?>
+<?php 
+// Require login before accessing upload page
+include('includes/session.php');
+require_login();
+
+include('includes/header.php'); 
+?>
 
 <div class="mx-auto max-w-6xl">
   <!-- Hero Section -->
@@ -18,22 +24,22 @@
   <div class="mt-10 bg-white/90 backdrop-blur-sm px-5 py-7 sm:px-8 sm:py-9 rounded-3xl shadow-xl border border-green-100">
     <h2 class="text-2xl font-bold text-green-800 text-center mb-4">📊 Upload Agricultural Dataset</h2>
     <p class="text-sm sm:text-base text-gray-600 mb-6 text-center leading-relaxed">
-      Supported format: <span class="font-semibold text-green-700">.csv</span> (e.g., Palay or Corn production — 2020 to 2025).<br class="hidden sm:block" />
+      Supported formats: <span class="font-semibold text-green-700">.csv, .xlsx, .xls</span> (e.g., Palay or Corn production — 2020 to 2025).<br class="hidden sm:block" />
       Recommended headers: <code class="bg-gray-100 px-2 py-0.5 rounded text-gray-700">Year, Region, Crop, Production</code>
     </p>
 
     <form action="dashboard.php" method="POST" enctype="multipart/form-data" class="space-y-5">
       <div>
-        <label for="csvFile" class="block text-sm font-semibold text-gray-700 mb-1.5">Select your CSV file</label>
+        <label for="csvFile" class="block text-sm font-semibold text-gray-700 mb-1.5">Select your file (CSV or Excel)</label>
         <input
           type="file"
           id="csvFile"
           name="csvFile"
-          accept=".csv"
+          accept=".csv,.xlsx,.xls"
           required
           class="block w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-700 shadow-sm transition focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-400/50"
         />
-        <p class="mt-2 text-xs text-gray-500">Preview up to 8 rows before submitting.</p>
+        <p class="mt-2 text-xs text-gray-500">Supported formats: CSV, Excel (.xlsx, .xls). Preview up to 8 rows before submitting.</p>
       </div>
 
       <button
@@ -185,12 +191,12 @@
       return;
     }
 
-    const isCsv = file.type === 'text/csv' || /\.csv$/i.test(file.name);
-    if (!isCsv) {
+    const isValidFile = /\.(csv|xlsx|xls)$/i.test(file.name);
+    if (!isValidFile) {
       resetPreview();
       previewCard.classList.remove('hidden');
       previewAlert.classList.remove('hidden');
-      previewAlert.textContent = 'Only CSV files are supported. Please choose a file with a .csv extension.';
+      previewAlert.textContent = 'Only CSV and Excel files (.csv, .xlsx, .xls) are supported.';
       previewChip.textContent = 'invalid file';
       return;
     }
