@@ -2,9 +2,10 @@
 /**
  * Session Management for AI-AgriLinkPH
  * Handles login, logout, session validation, and timeout
+ * Uses PDO for all database operations
  */
 
-// Include database configuration
+// Include database configuration (which includes env_loader)
 require_once(__DIR__ . '/db_config.php');
 // Include email configuration
 require_once(__DIR__ . '/../email_config.php');
@@ -37,7 +38,10 @@ if (session_status() === PHP_SESSION_NONE) {
 // Initialize users table if it doesn't exist
 function init_users_table() {
     try {
-        $conn = get_db_connection();
+        $pdo = get_db_connection();
+        if (!$pdo) {
+            return false;
+        }
         
         $sql = "CREATE TABLE IF NOT EXISTS users (
             id INT AUTO_INCREMENT PRIMARY KEY,
@@ -50,15 +54,11 @@ function init_users_table() {
             INDEX idx_email (email)
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci";
         
-        if ($conn->query($sql) === FALSE) {
-            error_log("Error creating users table: " . $conn->error);
-            return false;
-        }
-        
-        $conn->close();
+        $pdo->exec($sql);
         return true;
-    } catch (Exception $e) {
-        error_log("Error initializing users table: " . $e->getMessage());
+        
+    } catch (PDOException $e) {
+        error_log("Error creating users table: " . $e->getMessage());
         return false;
     }
 }
@@ -66,7 +66,10 @@ function init_users_table() {
 // Initialize password reset tokens table
 function init_password_reset_tokens_table() {
     try {
-        $conn = get_db_connection();
+        $pdo = get_db_connection();
+        if (!$pdo) {
+            return false;
+        }
         
         $sql = "CREATE TABLE IF NOT EXISTS password_reset_tokens (
             id INT AUTO_INCREMENT PRIMARY KEY,
@@ -82,16 +85,11 @@ function init_password_reset_tokens_table() {
             FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci";
         
-        if ($conn->query($sql) === FALSE) {
-            error_log("Error creating password_reset_tokens table: " . $conn->error);
-            $conn->close();
-            return false;
-        }
-        
-        $conn->close();
+        $pdo->exec($sql);
         return true;
-    } catch (Exception $e) {
-        error_log("Error initializing password_reset_tokens table: " . $e->getMessage());
+        
+    } catch (PDOException $e) {
+        error_log("Error creating password_reset_tokens table: " . $e->getMessage());
         return false;
     }
 }
@@ -148,34 +146,24 @@ function require_login() {
 function login($username, $password) {
     // First, try to authenticate from database
     try {
-        $conn = get_db_connection();
-        $stmt = $conn->prepare("SELECT id, username, password FROM users WHERE username = ? LIMIT 1");
+        $user = db_fetch_one(
+            "SELECT id, username, password FROM users WHERE username = ? LIMIT 1",
+            [$username]
+        );
         
-        if ($stmt) {
-            $stmt->bind_param("s", $username);
-            $stmt->execute();
-            $result = $stmt->get_result();
-            
-            if ($result->num_rows === 1) {
-                $user = $result->fetch_assoc();
+        if ($user) {
+            // Verify password
+            if (password_verify($password, $user['password'])) {
+                $_SESSION['logged_in'] = true;
+                $_SESSION['username'] = $user['username'];
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['last_activity'] = time();
+                $_SESSION['login_time'] = date('Y-m-d H:i:s');
                 
-                // Verify password
-                if (password_verify($password, $user['password'])) {
-                    $_SESSION['logged_in'] = true;
-                    $_SESSION['username'] = $user['username'];
-                    $_SESSION['user_id'] = $user['id'];
-                    $_SESSION['last_activity'] = time();
-                    $_SESSION['login_time'] = date('Y-m-d H:i:s');
-                    
-                    $stmt->close();
-                    $conn->close();
-                    return true;
-                }
+                return true;
             }
-            
-            $stmt->close();
         }
-        $conn->close();
+        
     } catch (Exception $e) {
         error_log("Database login error: " . $e->getMessage());
         // Fall through to hardcoded users
@@ -262,61 +250,41 @@ function register_user($username, $email, $password) {
     
     // Check database for existing username or email
     try {
-        $conn = get_db_connection();
-        
         // Check if username already exists
-        $stmt = $conn->prepare("SELECT id FROM users WHERE username = ? LIMIT 1");
-        if ($stmt) {
-            $stmt->bind_param("s", $username);
-            $stmt->execute();
-            $result = $stmt->get_result();
-            
-            if ($result->num_rows > 0) {
-                $stmt->close();
-                $conn->close();
-                return 'Username already exists. Please choose a different username.';
-            }
-            $stmt->close();
+        $existing = db_fetch_one(
+            "SELECT id FROM users WHERE username = ? LIMIT 1",
+            [$username]
+        );
+        
+        if ($existing) {
+            return 'Username already exists. Please choose a different username.';
         }
         
         // Check if email already exists
-        $stmt = $conn->prepare("SELECT id FROM users WHERE email = ? LIMIT 1");
-        if ($stmt) {
-            $stmt->bind_param("s", $email);
-            $stmt->execute();
-            $result = $stmt->get_result();
-            
-            if ($result->num_rows > 0) {
-                $stmt->close();
-                $conn->close();
-                return 'Email address is already registered. Please use a different email.';
-            }
-            $stmt->close();
+        $existing = db_fetch_one(
+            "SELECT id FROM users WHERE email = ? LIMIT 1",
+            [$email]
+        );
+        
+        if ($existing) {
+            return 'Email address is already registered. Please use a different email.';
         }
         
         // Hash password and insert new user
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        $stmt = $conn->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
+        
+        $stmt = db_query(
+            "INSERT INTO users (username, email, password) VALUES (?, ?, ?)",
+            [$username, $email, $hashed_password]
+        );
         
         if ($stmt) {
-            $stmt->bind_param("sss", $username, $email, $hashed_password);
-            
-            if ($stmt->execute()) {
-                $stmt->close();
-                $conn->close();
-                return true; // Success
-            } else {
-                $error = 'Registration failed. Please try again.';
-                $stmt->close();
-                $conn->close();
-                return $error;
-            }
+            return true; // Success
         } else {
-            $conn->close();
-            return 'Database error. Please try again later.';
+            return 'Registration failed. Please try again.';
         }
         
-    } catch (Exception $e) {
+    } catch (PDOException $e) {
         error_log("Registration error: " . $e->getMessage());
         return 'Registration failed. Please try again later.';
     }
@@ -329,29 +297,18 @@ function request_password_reset($email) {
     }
     
     try {
-        $conn = get_db_connection();
-        
         // Check if user exists
-        $stmt = $conn->prepare("SELECT id, username FROM users WHERE email = ? LIMIT 1");
-        if (!$stmt) {
-            $conn->close();
+        $user = db_fetch_one(
+            "SELECT id, username FROM users WHERE email = ? LIMIT 1",
+            [$email]
+        );
+        
+        if (!$user) {
             return true; // Return true for security (don't reveal if email exists)
         }
         
-        $stmt->bind_param("s", $email);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        
-        if ($result->num_rows === 0) {
-            $stmt->close();
-            $conn->close();
-            return true; // Return true for security (don't reveal if email exists)
-        }
-        
-        $user = $result->fetch_assoc();
         $user_id = $user['id'];
         $username = $user['username'];
-        $stmt->close();
         
         // Generate secure token
         $token = bin2hex(random_bytes(32)); // 64 character token
@@ -360,26 +317,18 @@ function request_password_reset($email) {
         $expires_at = date('Y-m-d H:i:s', time() + 3600);
         
         // Invalidate any existing tokens for this user
-        $stmt = $conn->prepare("UPDATE password_reset_tokens SET used = 1 WHERE user_id = ? AND used = 0");
-        if ($stmt) {
-            $stmt->bind_param("i", $user_id);
-            $stmt->execute();
-            $stmt->close();
-        }
+        db_query(
+            "UPDATE password_reset_tokens SET used = 1 WHERE user_id = ? AND used = 0",
+            [$user_id]
+        );
         
         // Insert new token
-        $stmt = $conn->prepare("INSERT INTO password_reset_tokens (user_id, email, token, expires_at) VALUES (?, ?, ?, ?)");
-        if (!$stmt) {
-            $conn->close();
-            return true; // Return true for security
-        }
+        $stmt = db_query(
+            "INSERT INTO password_reset_tokens (user_id, email, token, expires_at) VALUES (?, ?, ?, ?)",
+            [$user_id, $email, $token, $expires_at]
+        );
         
-        $stmt->bind_param("isss", $user_id, $email, $token, $expires_at);
-        
-        if ($stmt->execute()) {
-            $stmt->close();
-            $conn->close();
-            
+        if ($stmt) {
             // Send email with reset link
             $reset_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . 
                         "://" . $_SERVER['HTTP_HOST'] . 
@@ -390,13 +339,11 @@ function request_password_reset($email) {
             
             // Return true even if email fails (for security)
             return true;
-        } else {
-            $stmt->close();
-            $conn->close();
-            return true; // Return true for security
         }
         
-    } catch (Exception $e) {
+        return true; // Return true for security
+        
+    } catch (PDOException $e) {
         error_log("Password reset request error: " . $e->getMessage());
         return true; // Return true for security
     }
@@ -409,27 +356,14 @@ function verify_reset_token($token) {
     }
     
     try {
-        $conn = get_db_connection();
-        $stmt = $conn->prepare("SELECT id, user_id, email, expires_at, used FROM password_reset_tokens WHERE token = ? LIMIT 1");
+        $token_data = db_fetch_one(
+            "SELECT id, user_id, email, expires_at, used FROM password_reset_tokens WHERE token = ? LIMIT 1",
+            [$token]
+        );
         
-        if (!$stmt) {
-            $conn->close();
+        if (!$token_data) {
             return false;
         }
-        
-        $stmt->bind_param("s", $token);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        
-        if ($result->num_rows === 0) {
-            $stmt->close();
-            $conn->close();
-            return false;
-        }
-        
-        $token_data = $result->fetch_assoc();
-        $stmt->close();
-        $conn->close();
         
         // Check if token is used
         if ($token_data['used'] == 1) {
@@ -444,7 +378,7 @@ function verify_reset_token($token) {
         
         return true;
         
-    } catch (Exception $e) {
+    } catch (PDOException $e) {
         error_log("Token verification error: " . $e->getMessage());
         return false;
     }
@@ -461,38 +395,24 @@ function reset_password($token, $new_password) {
     }
     
     try {
-        $conn = get_db_connection();
-        
         // Verify token
-        $stmt = $conn->prepare("SELECT id, user_id, email, expires_at, used FROM password_reset_tokens WHERE token = ? LIMIT 1");
-        if (!$stmt) {
-            $conn->close();
+        $token_data = db_fetch_one(
+            "SELECT id, user_id, email, expires_at, used FROM password_reset_tokens WHERE token = ? LIMIT 1",
+            [$token]
+        );
+        
+        if (!$token_data) {
             return 'Invalid reset token.';
         }
-        
-        $stmt->bind_param("s", $token);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        
-        if ($result->num_rows === 0) {
-            $stmt->close();
-            $conn->close();
-            return 'Invalid reset token.';
-        }
-        
-        $token_data = $result->fetch_assoc();
-        $stmt->close();
         
         // Check if token is used
         if ($token_data['used'] == 1) {
-            $conn->close();
             return 'This reset link has already been used. Please request a new one.';
         }
         
         // Check if token is expired
         $expires_at = strtotime($token_data['expires_at']);
         if (time() > $expires_at) {
-            $conn->close();
             return 'This reset link has expired. Please request a new one.';
         }
         
@@ -500,34 +420,25 @@ function reset_password($token, $new_password) {
         
         // Update password
         $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
-        $stmt = $conn->prepare("UPDATE users SET password = ? WHERE id = ?");
         
-        if (!$stmt) {
-            $conn->close();
-            return 'Database error. Please try again.';
-        }
+        $stmt = db_query(
+            "UPDATE users SET password = ? WHERE id = ?",
+            [$hashed_password, $user_id]
+        );
         
-        $stmt->bind_param("si", $hashed_password, $user_id);
-        
-        if ($stmt->execute()) {
+        if ($stmt) {
             // Mark token as used
-            $stmt->close();
-            $stmt = $conn->prepare("UPDATE password_reset_tokens SET used = 1 WHERE token = ?");
-            if ($stmt) {
-                $stmt->bind_param("s", $token);
-                $stmt->execute();
-                $stmt->close();
-            }
+            db_query(
+                "UPDATE password_reset_tokens SET used = 1 WHERE token = ?",
+                [$token]
+            );
             
-            $conn->close();
             return true; // Success
         } else {
-            $stmt->close();
-            $conn->close();
             return 'Failed to update password. Please try again.';
         }
         
-    } catch (Exception $e) {
+    } catch (PDOException $e) {
         error_log("Password reset error: " . $e->getMessage());
         return 'An error occurred. Please try again later.';
     }

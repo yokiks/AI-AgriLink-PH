@@ -24,17 +24,17 @@
               ?> text-gray-800 min-h-screen flex flex-col">
 
   <nav class="w-full bg-green-700 text-white px-4 py-3 shadow-md relative z-50">
-    <div class="flex flex-col sm:flex-row items-center justify-between gap-3 max-w-7xl mx-auto">
-      <div class="text-center font-semibold">🌾 AI-AgriLink PH: Smart Agriculture Visualizer with AI Insight
+    <div class="flex items-center justify-between gap-3 max-w-7xl mx-auto">
+      <div class="font-semibold text-sm sm:text-base truncate">🌾 AI-AgriLink PH: Smart Agriculture Visualizer with AI Insight
       </div>
       <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']): ?>
-        <div class="flex items-center gap-3 relative z-50">
-          <span class="text-sm">Welcome, <?= htmlspecialchars($_SESSION['username'] ?? 'User', ENT_QUOTES, 'UTF-8') ?></span>
-          <a href="logout.php" class="inline-flex items-center gap-1 rounded-lg bg-green-800 px-3 py-1.5 text-sm font-medium hover:bg-green-900 transition relative z-50 pointer-events-auto">
+        <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+          <span class="text-xs sm:text-sm hidden sm:inline">Welcome, <?= htmlspecialchars($_SESSION['username'] ?? 'User', ENT_QUOTES, 'UTF-8') ?></span>
+          <a href="logout.php" class="inline-flex items-center gap-1 rounded-lg bg-green-800 px-2 sm:px-3 py-1.5 text-xs sm:text-sm font-medium hover:bg-green-900 transition">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
             </svg>
-            Logout
+            <span class="hidden sm:inline">Logout</span>
           </a>
         </div>
       <?php endif; ?>

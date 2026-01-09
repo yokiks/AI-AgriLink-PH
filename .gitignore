@@ -1,0 +1,5 @@
+sessions/
+uploads/
+
+.env
+env.example
