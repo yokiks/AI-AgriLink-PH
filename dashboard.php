@@ -10,7 +10,7 @@ include('includes/functions.php');
 ?>
 
 <!-- Background wrapper with gradient and image -->
-<div class="fixed inset-0 -z-10 overflow-hidden">
+<div class="fixed inset-0 bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 overflow-hidden z-0">
   <!-- Background Image -->
   <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-25" style="background-image: url('assets/img/homepage5.jpg');"></div>
   

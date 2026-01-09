@@ -35,7 +35,7 @@ include('includes/header.php');
 ?>
 
 <!-- Background wrapper with gradient and image -->
-<div class="fixed inset-0 -z-10 overflow-hidden">
+<div class="fixed inset-0 bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 overflow-hidden z-0">
   <!-- Background Image -->
   <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-25" style="background-image: url('assets/img/homepage5.jpg');"></div>
   
@@ -153,13 +153,18 @@ include('includes/header.php');
       </a>
     </div>
 
-    <?php if ($success): ?>
-    <div class="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-      <p class="text-xs text-blue-800">
-        <strong>Note:</strong> Check your spam folder if you don't see the email. The reset link will expire in 1 hour.
-      </p>
-    </div>
-    <?php endif; ?>
+     <?php if ($success): ?>
+     <div class="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+       <p class="text-xs text-blue-800">
+         <strong>Note:</strong> 
+         <?php if (defined('EMAIL_METHOD') && EMAIL_METHOD === 'file'): ?>
+           <strong>Development Mode:</strong> Email has been saved to <code>email_logs/</code> folder. Check that folder for the reset link.
+         <?php else: ?>
+           Check your spam folder if you don't see the email. The reset link will expire in 1 hour.
+         <?php endif; ?>
+       </p>
+     </div>
+     <?php endif; ?>
   </div>
 </div>
 

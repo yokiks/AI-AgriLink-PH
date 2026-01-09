@@ -25,10 +25,12 @@ This uses PHP's built-in `mail()` function. Works if your server has mail config
 **Configuration:** Already set as default in `email_config.php`
 
 **Pros:**
+
 - No additional setup required
 - Works on most servers
 
 **Cons:**
+
 - Emails may go to spam
 - Requires server mail configuration
 - Less reliable
@@ -40,6 +42,7 @@ Use SMTP for reliable email delivery. Supports Gmail, Outlook, and other SMTP se
 **Setup Steps:**
 
 1. Install PHPMailer (if using Composer):
+
    ```bash
    composer require phpmailer/phpmailer
    ```
@@ -59,11 +62,13 @@ Use SMTP for reliable email delivery. Supports Gmail, Outlook, and other SMTP se
      ```
 
 **Gmail Setup:**
+
 1. Enable 2-Step Verification on your Google account
 2. Generate an App Password: https://myaccount.google.com/apppasswords
 3. Use the App Password (not your regular password) in `SMTP_PASSWORD`
 
 **Outlook/Hotmail Setup:**
+
 - SMTP_HOST: `smtp-mail.outlook.com`
 - SMTP_PORT: `587`
 - SMTP_SECURE: `tls`
@@ -76,6 +81,7 @@ For testing without sending actual emails, save emails to files.
 **Setup:**
 
 1. Edit `email_config.php`:
+
    ```php
    define('EMAIL_METHOD', 'file');
    define('EMAIL_SAVE_PATH', __DIR__ . '/../email_logs/');
@@ -84,23 +90,27 @@ For testing without sending actual emails, save emails to files.
 2. The system will create an `email_logs` folder and save all emails there as HTML files.
 
 **Pros:**
+
 - Perfect for development/testing
 - No email server needed
 - Can preview emails before sending
 
 **Cons:**
+
 - Not for production use
 - Emails are not actually sent
 
 ## How It Works
 
 1. **User requests password reset:**
+
    - User enters email on `forgot_password.php`
    - System generates a secure 64-character token
    - Token is stored in database with 1-hour expiration
    - Email is sent with reset link
 
 2. **User clicks reset link:**
+
    - Link goes to `reset_password.php?token=XXXXX`
    - System verifies token is valid and not expired
    - User enters new password
@@ -121,6 +131,7 @@ For testing without sending actual emails, save emails to files.
 ## Testing
 
 1. **Test with file method first:**
+
    - Set `EMAIL_METHOD` to `'file'`
    - Request password reset
    - Check `email_logs/` folder for the email
@@ -135,22 +146,26 @@ For testing without sending actual emails, save emails to files.
 ## Troubleshooting
 
 ### Emails not sending (PHP mail):
+
 - Check server mail configuration
 - Check spam folder
 - Consider using SMTP instead
 
 ### SMTP connection failed:
+
 - Verify SMTP credentials
 - Check firewall settings
 - For Gmail: Use App Password, not regular password
 - Check if port 587/465 is blocked
 
 ### Token not working:
+
 - Check if token expired (1 hour limit)
 - Verify token wasn't already used
 - Check database connection
 
 ### Reset link not working:
+
 - Verify `reset_password.php` exists
 - Check URL structure in email
 - Ensure HTTPS is configured if using secure links
@@ -166,9 +181,8 @@ For testing without sending actual emails, save emails to files.
 ## Support
 
 For issues or questions, check:
+
 - Server error logs
 - Email logs (if using file method)
 - Database for token records
 - PHP error logs
-
-

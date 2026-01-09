@@ -7,9 +7,9 @@
  */
 
 // =============================================================================
-// OPTION 1: Use PHP mail() (Default - requires mail server configuration)
+// OPTION 1: Use PHP mail() (Requires mail server configuration)
 // =============================================================================
-define('EMAIL_METHOD', 'php_mail');
+// define('EMAIL_METHOD', 'php_mail');
 
 // =============================================================================
 // OPTION 2: Use SMTP (Recommended for production)
@@ -31,11 +31,12 @@ define('SMTP_FROM_NAME', 'AI-AgriLink PH');
 */
 
 // =============================================================================
-// OPTION 3: Save to file (For development/testing ONLY)
+// OPTION 3: Save to file (For development/testing ONLY - DEFAULT FOR XAMPP)
 // =============================================================================
-// Uncomment this to save emails to files instead of sending them
-// define('EMAIL_METHOD', 'file');
-// define('EMAIL_SAVE_PATH', __DIR__ . '/../email_logs/');
+// This is the default method for XAMPP/development environments
+// Emails will be saved to email_logs/ folder instead of being sent
+define('EMAIL_METHOD', 'file');
+define('EMAIL_SAVE_PATH', __DIR__ . '/../email_logs/');
 
 // =============================================================================
 // EMAIL SETTINGS
@@ -64,13 +65,31 @@ function send_email($to, $subject, $html_message) {
 
 /**
  * Send email using PHP's mail() function
+ * Note: This requires a mail server to be configured on your system
+ * For XAMPP/development, use the 'file' method instead
  */
 function send_email_php_mail($to, $subject, $html_message) {
+    // Check if mail server is available
+    if (!function_exists('mail')) {
+        error_log("PHP mail() function is not available. Consider using SMTP or file method.");
+        return false;
+    }
+    
     $headers = "MIME-Version: 1.0" . "\r\n";
     $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
     $headers .= "From: " . EMAIL_FROM_NAME . " <" . EMAIL_FROM . ">" . "\r\n";
     
-    return mail($to, $subject, $html_message, $headers);
+    try {
+        // Suppress warnings and use error handling
+        $result = @mail($to, $subject, $html_message, $headers);
+        if (!$result) {
+            error_log("Failed to send email using mail() function. Check your mail server configuration. For XAMPP, use EMAIL_METHOD='file' instead.");
+        }
+        return $result;
+    } catch (Exception $e) {
+        error_log("Email send error: " . $e->getMessage());
+        return false;
+    }
 }
 
 /**

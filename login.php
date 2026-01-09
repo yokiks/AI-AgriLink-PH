@@ -62,7 +62,7 @@ include('includes/header.php');
 ?>
 
 <!-- Background wrapper with gradient and image -->
-<!-- <div class="fixed inset-0 bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 overflow-hidden z-0"> -->
+<div class="fixed inset-0 bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 overflow-hidden z-0">
   <!-- Background Image -->
   <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-25" style="background-image: url('assets/img/homepage5.jpg');"></div>
   
@@ -78,7 +78,7 @@ include('includes/header.php');
 </div>
 
 <!-- Form container - centered -->
-<div class="w-full max-w-md mx-auto px-4 py-6 sm:py-8 relative z-10">
+<div class="w-full max-w-md mx-auto px-4 py-6 sm:py-8 relative z-10 mt-10">
   <div class="bg-white/95 backdrop-blur-sm rounded-3xl border border-green-200/50 shadow-2xl p-6 sm:p-8 md:p-10">
     <div class="text-center mb-6">
       <h1 class="text-2xl sm:text-3xl font-bold text-green-900 mb-2">🌾 AI-AgriLink PH</h1>
