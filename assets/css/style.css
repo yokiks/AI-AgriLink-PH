@@ -50,6 +50,34 @@ body.gradient-bg main {
   z-index: 10;
 }
 
+/* Ensure relative containers for password inputs are full width */
+.relative {
+  width: 100% !important;
+  box-sizing: border-box;
+}
+
+/* Ensure password inputs are full width */
+input[type="password"] {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box;
+}
+
+/* Ensure password input containers are full width */
+.relative input[type="password"],
+div.relative input[type="password"] {
+  width: 100% !important;
+  max-width: 100% !important;
+  display: block !important;
+}
+
+/* Ensure form field containers are full width */
+form > div,
+form .space-y-4 > div,
+form .space-y-5 > div {
+  width: 100% !important;
+}
+
 /* Login page specific styles */
 body.login-page {
   background: transparent;
@@ -343,7 +371,7 @@ body.reset-password-page footer {
   }
   
   /* Login page background adjustments for mobile */
-  body.login-page .relative {
+  body.login-page main > .relative.z-10 {
     width: 100%;
     max-width: 100%;
     padding: 1rem;
@@ -370,16 +398,25 @@ body.reset-password-page footer {
   }
   
   /* Ensure proper centering on tablet */
-  body.login-page .relative {
+  body.login-page main > .relative.z-10 {
     max-width: 28rem;
   }
 }
 
 /* Desktop adjustments */
 @media (min-width: 1025px) {
-  body.login-page .relative {
+  body.login-page main > .relative.z-10 {
     max-width: 28rem;
   }
+}
+
+/* Ensure password field containers are always full width */
+body.login-page form .relative,
+body.forgot-password-page form .relative,
+body.reset-password-page form .relative {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 0 !important;
 }
 
 /* Login page tab navigation improvements */

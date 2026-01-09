@@ -159,7 +159,7 @@ include('includes/header.php');
         <label for="reg_password" class="block text-sm font-semibold text-gray-700 mb-1.5">
           Password
         </label>
-        <div class="relative">
+        <div class="relative w-full">
           <input
             type="password"
             id="reg_password"
@@ -186,7 +186,7 @@ include('includes/header.php');
         <label for="reg_confirm_password" class="block text-sm font-semibold text-gray-700 mb-1.5">
           Confirm Password
         </label>
-        <div class="relative">
+        <div class="relative w-full">
           <input
             type="password"
             id="reg_confirm_password"
@@ -239,7 +239,7 @@ include('includes/header.php');
         <label for="password" class="block text-sm font-semibold text-gray-700 mb-1.5">
           Password
         </label>
-        <div class="relative">
+        <div class="relative w-full">
           <input
             type="password"
             id="password"
