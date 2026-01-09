@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,21 +10,23 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" href="<?php echo htmlspecialchars((strpos($_SERVER['PHP_SELF'], '/') === 0 ? '' : './') . 'assets/css/style.css', ENT_QUOTES, 'UTF-8'); ?>" />
 </head>
-<body class="<?php 
-  if (isset($is_login_page) && $is_login_page) {
-    echo 'login-page';
-  } elseif (isset($is_forgot_password_page) && $is_forgot_password_page) {
-    echo 'forgot-password-page';
-  } elseif (isset($is_reset_password_page) && $is_reset_password_page) {
-    echo 'reset-password-page';
-  } else {
-    echo 'gradient-bg';
-  }
-?> text-gray-800 min-h-screen flex flex-col">
-  <nav class="bg-green-700 text-white px-4 py-3 shadow-md relative z-50">
+
+<body class="<?php
+              if (isset($is_login_page) && $is_login_page) {
+                echo 'login-page';
+              } elseif (isset($is_forgot_password_page) && $is_forgot_password_page) {
+                echo 'forgot-password-page';
+              } elseif (isset($is_reset_password_page) && $is_reset_password_page) {
+                echo 'reset-password-page';
+              } else {
+                echo 'gradient-bg';
+              }
+              ?> text-gray-800 min-h-screen flex flex-col">
+
+  <nav class="w-full bg-green-700 text-white px-4 py-3 shadow-md relative z-50">
     <div class="flex flex-col sm:flex-row items-center justify-between gap-3 max-w-7xl mx-auto">
-        <div class="text-center font-semibold">🌾 AI-AgriLink PH: Smart Agriculture Visualizer with AI Insight
- </div>
+      <div class="text-center font-semibold">🌾 AI-AgriLink PH: Smart Agriculture Visualizer with AI Insight
+      </div>
       <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']): ?>
         <div class="flex items-center gap-3 relative z-50">
           <span class="text-sm">Welcome, <?= htmlspecialchars($_SESSION['username'] ?? 'User', ENT_QUOTES, 'UTF-8') ?></span>
@@ -37,4 +40,5 @@
       <?php endif; ?>
     </div>
   </nav>
-  <main class="flex-1 w-full px-4 py-6 sm:px-6 lg:px-10">
+
+  <main class="flex-1 w-full <?php echo (isset($is_login_page) && $is_login_page) ? '' : 'px-4 py-6 sm:px-6 lg:px-10'; ?>">
