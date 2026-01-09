@@ -1,0 +1,25 @@
+# Replit Configuration for AI-AgriLinkPH
+
+# Run command - starts PHP development server
+run = "php -S 0.0.0.0:8000 -t ."
+
+# Entry point
+entrypoint = "index.php"
+
+# Language
+language = "php"
+
+# Enable Nix
+[nix]
+channel = "stable-22_11"
+
+# PHP Configuration
+[deploy]
+run = ["sh", "-c", "php -S 0.0.0.0:8000 -t ."]
+
+# Environment variables (set these in Replit Secrets)
+[env]
+# Database will be configured via environment variables
+# Set these in Replit Secrets:
+# DB_HOST, DB_USER, DB_PASS, DB_NAME
+

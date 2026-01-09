@@ -16,13 +16,15 @@ body.gradient-bg main {
 }
 
 /* Background wrapper styling for pages with background image */
-.fixed.inset-0.z-0 {
+/* Backgrounds use fixed positioning to cover full viewport */
+.fixed.inset-0.-z-10 {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 0;
+  z-index: -10;
+  pointer-events: none;
 }
 
 /* Ensure content is above background */
@@ -35,15 +37,15 @@ body.gradient-bg main {
 body.login-page {
   background: transparent;
   overflow-x: hidden;
+  position: relative;
 }
 
-body.login-page .fixed {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 0;
+/* Prevent layout shift from fixed background */
+body.login-page main,
+body.forgot-password-page main,
+body.reset-password-page main {
+  position: relative;
+  z-index: 1;
 }
 
 /* Login page main content */
@@ -82,14 +84,7 @@ body.forgot-password-page {
   overflow-x: hidden;
 }
 
-body.forgot-password-page .fixed {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 0;
-}
+/* Background now uses absolute positioning within relative container */
 
 /* Forgot password page main content */
 body.forgot-password-page main {
@@ -127,14 +122,7 @@ body.reset-password-page {
   overflow-x: hidden;
 }
 
-body.reset-password-page .fixed {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 0;
-}
+/* Background now uses absolute positioning within relative container */
 
 /* Reset password page main content */
 body.reset-password-page main {

@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="<?php echo htmlspecialchars((strpos($_SERVER['PHP_SELF'], '/') === 0 ? '' : './') . 'assets/css/style.css', ENT_QUOTES, 'UTF-8'); ?>" />
 </head>
 <body class="<?php 
   if (isset($is_login_page) && $is_login_page) {

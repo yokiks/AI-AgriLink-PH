@@ -16,6 +16,21 @@ define('SESSION_NAME', 'agrilink_session');
 // Set session name BEFORE starting session
 if (session_status() === PHP_SESSION_NONE) {
     session_name(SESSION_NAME);
+    
+    // For Replit: Set session save path if needed
+    // Replit may need a writable directory for sessions
+    $session_path = __DIR__ . '/../sessions';
+    if (!is_dir($session_path)) {
+        @mkdir($session_path, 0777, true);
+    }
+    if (is_dir($session_path) && is_writable($session_path)) {
+        session_save_path($session_path);
+    }
+    
+    // Configure session cookie for better compatibility
+    ini_set('session.cookie_httponly', 1);
+    ini_set('session.use_only_cookies', 1);
+    
     session_start();
 }
 

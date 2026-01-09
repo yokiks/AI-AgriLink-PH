@@ -34,16 +34,16 @@ $is_forgot_password_page = true;
 include('includes/header.php');
 ?>
 
-<!-- Background wrapper with gradient and image -->
-<div class="fixed inset-0 bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 overflow-hidden z-0">
+<!-- Full viewport background (fixed to cover entire screen) -->
+<div class="fixed inset-0 bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 overflow-hidden -z-10 pointer-events-none">
   <!-- Background Image -->
-  <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-25" style="background-image: url('assets/img/homepage5.jpg');"></div>
+  <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-25" style="background-image: url('<?php echo htmlspecialchars((strpos($_SERVER['PHP_SELF'], '/') === 0 ? '' : './') . 'assets/img/homepage5.jpg', ENT_QUOTES, 'UTF-8'); ?>');"></div>
   
   <!-- Gradient Overlay -->
   <div class="absolute inset-0 bg-gradient-to-br from-green-50/80 via-emerald-50/80 to-teal-50/80"></div>
   
   <!-- Decorative background elements -->
-  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+  <div class="absolute inset-0 overflow-hidden">
     <div class="absolute -top-40 -right-40 w-80 h-80 bg-green-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob"></div>
     <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-emerald-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-2000"></div>
     <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-teal-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-4000"></div>
@@ -165,7 +165,7 @@ include('includes/header.php');
        </p>
      </div>
      <?php endif; ?>
-  </div>
-</div>
-
-<?php include('includes/footer.php'); ?>
+   </div>
+ </div>
+ 
+ <?php include('includes/footer.php'); ?>
